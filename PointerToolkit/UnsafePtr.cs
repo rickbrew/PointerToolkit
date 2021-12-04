@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace UnsafeRuntime
+namespace PointerToolkit
 {
     public static unsafe class UnsafePtr
     {

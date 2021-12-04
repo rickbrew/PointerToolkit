@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UnsafeRuntime;
+namespace PointerToolkit;
 
 public unsafe struct PtrPtrPtr<T>
     : IEquatable<PtrPtrPtr<T>>
