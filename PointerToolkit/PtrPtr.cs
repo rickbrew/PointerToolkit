@@ -4,11 +4,21 @@ using System.Runtime.CompilerServices;
 namespace PointerToolkit;
 
 public unsafe struct PtrPtr
-    : IEquatable<PtrPtr>
+    : IEquatable<PtrPtr>,
+      IComparable<PtrPtr>
 {
     private void** p;
 
     private PtrPtr(void** p) => this.p = p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator PtrPtr(void** p) => UnsafePtr.As<PtrPtr>(ref p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator void**(PtrPtr ptr) => ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public int CompareTo(Ptr other) => ((IntPtr)this.p).CompareTo(other);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override readonly bool Equals(object? other) => (other is PtrPtr p) && (this.p == p.p);
@@ -24,10 +34,4 @@ public unsafe struct PtrPtr
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override int GetHashCode() => ((IntPtr)this.p).GetHashCode();
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator PtrPtr(void** p) => UnsafePtr.As<PtrPtr>(ref p);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator void**(PtrPtr ptr) => ptr.p;
 }
