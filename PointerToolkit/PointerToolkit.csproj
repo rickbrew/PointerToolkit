@@ -16,6 +16,7 @@
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Provides structs that wrap pointers, Unsafe methods for converting to and from `ref` pointers of any type, as well as `Interlocked` and `Volatile` operations on `ref` pointers.</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
