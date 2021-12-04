@@ -23,10 +23,7 @@ public unsafe struct PtrPtr
     public static bool operator !=(PtrPtr ptr1, PtrPtr ptr2) => ptr1.p != ptr2.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override int GetHashCode()
-    {
-        return ((IntPtr)this.p).GetHashCode();
-    }
+    public override int GetHashCode() => ((IntPtr)this.p).GetHashCode();
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator PtrPtr(void** p) => UnsafePtr.As<PtrPtr>(ref p);
