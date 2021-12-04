@@ -1,5 +1,5 @@
 # UnsafeRuntime
-Provides structs that wrap pointers, and Unsafe methods for converting to and from `ref` pointers of any type.
+Provides structs that wrap pointers, Unsafe methods for converting to and from `ref` pointers of any type, as well as `Interlocked` and `Volatile` operations on `ref` pointers.
 
 Even using the built-in `System.Runtime.CompilerServices.Unsafe` class, you cannot reinterpret `ref`s to raw pointers for use in calls to methods such as `Interlocked.Exchange()` or `Volatile.Read()`. This package allows you to do stuff like that:
 
