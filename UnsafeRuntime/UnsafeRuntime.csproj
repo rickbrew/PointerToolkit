@@ -12,6 +12,10 @@
     <PackageTags>unsafe;pointer;pointers</PackageTags>
     <VersionPrefix>1.0.0</VersionPrefix>
     <Version>$(VersionPrefix)-preview</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <AssemblyVersion></AssemblyVersion>
+    <FileVersion></FileVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
@@ -22,4 +26,11 @@
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="&quot;$(SolutionDir)UnsafeRuntimeILRewriter\bin\$(Configuration)\$(TargetFramework)\UnsafeRuntimeILRewriter.exe&quot; &quot;$(TargetPath)&quot;" />
   </Target>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Link>README.md</Link>
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 </Project>
