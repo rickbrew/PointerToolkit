@@ -7,6 +7,8 @@ Pointers up to 3 levels of indirection are supported, e.g. `void***` and `T***`.
 
 We may get this in .NET itself someday, if https://github.com/dotnet/runtime/issues/62342 is approved and landed. Until then, you can use this.
 
+`CastPtr<...>` is also provided, which can be used to generate static `__cast()` "method operators." This solves the problem where you have (e.g.) an `ID2D1SolidColorBrush*` that you need to pass to a method that takes a pointer to a base interface, such as `ID2D1Brush*`. Instead of forcing a pointer cast with `(ID2D1Brush*)`, which denies the compiler a chance to verify that the cast is appropriate, you can use `__cast(p)`. A temporary `CastPtr<ID2D1SolidColorBrush, ID2D1Brush, ID2D1Resource, IUnknown>` will be created which will implicitly cast to pointers of all the base interface pointer types. (Note that "interface" in the sense refers to a COM interface, not a managed interface.)
+
 ```cs
 namespace PointerToolkit;
 
