@@ -11,12 +11,12 @@
     <RepositoryUrl>https://github.com/rickbrew/PointerToolkit</RepositoryUrl>
     <PackageTags>interlocked;pointer;pointers;unsafe;volatile</PackageTags>
     <VersionPrefix>1.0.0</VersionPrefix>
-    <Version>$(VersionPrefix)-preview2</Version>
+    <Version>$(VersionPrefix)-preview3</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Description>Provides structs that wrap pointers, Unsafe methods for converting to and from ref pointers of any type, as well as Interlocked and Volatile operations on ref pointers.</Description>
+    <Description>Provides structs that wrap pointers, as well as Unsafe, Interlocked, and Volatile operations on ref pointers.</Description>
     <Authors>Rick Brewster</Authors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
