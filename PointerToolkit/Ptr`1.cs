@@ -25,7 +25,7 @@ public unsafe struct Ptr<T>
     public static implicit operator void*(Ptr<T> ptr) => ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public int CompareTo(Ptr other) => ((IntPtr)this.p).CompareTo(other);
+    public int CompareTo(Ptr<T> other) => ((IntPtr)this.p).CompareTo(other);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override readonly bool Equals(object? other) => (other is Ptr<T> p) && (this.p == p.p);
