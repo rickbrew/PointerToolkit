@@ -19,7 +19,7 @@ public unsafe struct Ptr<T>
 
     public override int GetHashCode()
     {
-        return UnsafePtr.As<T, IntPtr>(ref this.p).GetHashCode();
+        return ((IntPtr)this.p).GetHashCode();
     }
 
     public static implicit operator Ptr<T>(T* p) => UnsafePtr.As<T, Ptr<T>>(ref p);

@@ -18,7 +18,7 @@ public unsafe struct PtrPtr
 
     public override int GetHashCode()
     {
-        return UnsafePtr.As<IntPtr>(ref this.p).GetHashCode();
+        return ((IntPtr)this.p).GetHashCode();
     }
 
     public static implicit operator PtrPtr(void** p) => UnsafePtr.As<PtrPtr>(ref p);
