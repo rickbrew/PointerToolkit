@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointerToolkit", "PointerToolkit\PointerToolkit.csproj", "{66D535EB-2199-4A92-BFAB-CBE02CE72185}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1D436E15-06D0-4F5B-8779-6C45910BD134} = {1D436E15-06D0-4F5B-8779-6C45910BD134}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointerToolkit.Generator", "PointerToolkit.Generator\PointerToolkit.Generator.csproj", "{1D436E15-06D0-4F5B-8779-6C45910BD134}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{66D535EB-2199-4A92-BFAB-CBE02CE72185}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66D535EB-2199-4A92-BFAB-CBE02CE72185}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66D535EB-2199-4A92-BFAB-CBE02CE72185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D436E15-06D0-4F5B-8779-6C45910BD134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D436E15-06D0-4F5B-8779-6C45910BD134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D436E15-06D0-4F5B-8779-6C45910BD134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D436E15-06D0-4F5B-8779-6C45910BD134}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -39,4 +39,7 @@
     </PackageReference>
     <PackageReference Include="InlineIL.Fody" Version="1.7.1" PrivateAssets="all" />
   </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="&quot;$(ProjectDir)..\PointerToolkit.Generator\bin\$(Configuration)\$(TargetFramework)\PointerToolkit.Generator.exe&quot; &quot;$(ProjectDir)\&quot;" />
+  </Target>
 </Project>
