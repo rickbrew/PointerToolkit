@@ -9,9 +9,9 @@
     <Copyright>Copyright ©️ 2021 Rick Brewster</Copyright>
     <PackageProjectUrl>https://github.com/rickbrew/PointerToolkit</PackageProjectUrl>
     <RepositoryUrl>https://github.com/rickbrew/PointerToolkit</RepositoryUrl>
-    <PackageTags>unsafe;pointer;pointers</PackageTags>
+    <PackageTags>interlocked;pointer;pointers;unsafe;volatile</PackageTags>
     <VersionPrefix>1.0.0</VersionPrefix>
-    <Version>$(VersionPrefix)-preview</Version>
+    <Version>$(VersionPrefix)-preview1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
