@@ -38,7 +38,7 @@ These structs are supported by the `PtrOperators` class, which contains `__ptr()
 For instance, let's say you want to call a method on a COM object inside the delegate passed to `String.Create()`. Without PointerToolkit or your own struct wrappers, you'd have to pass it in as an `IntPtr` and cast it back yourself because you can't specify a pointer type for the `T` in `SpanAction<T>` . `Ptr<IFoo>` helps with that. In addition, the `__ptr()` "operator methods" help reduce the typing and duplication of types even further:
 
 (an example from my wrapper for Direct2D's [`ID2D1Properties`](https://docs.microsoft.com/en-us/windows/win32/api/d2d1_1/nn-d2d1_1-id2d1properties))
-```
+```cs
 public string? TryGetPropertyName(int index)
 {
     using var @lock = EnterFactoryLock();
