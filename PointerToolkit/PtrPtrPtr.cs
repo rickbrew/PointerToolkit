@@ -7,15 +7,18 @@ public unsafe struct PtrPtrPtr
     : IEquatable<PtrPtrPtr>,
       IComparable<PtrPtrPtr>
 {
-    private void** p;
+    private void*** p;
 
-    private PtrPtrPtr(void** p) => this.p = p;
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator PtrPtrPtr(void** p) => UnsafePtr.As<PtrPtrPtr>(ref p);
+    private PtrPtrPtr(void*** p) => this.p = p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator void**(PtrPtrPtr ptr) => ptr.p;
+    public void*** Get() => this.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator PtrPtrPtr(void*** p) => UnsafePtr.As<PtrPtrPtr>(ref p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator void***(PtrPtrPtr ptr) => ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override readonly bool Equals(object? other) => (other is PtrPtrPtr p) && (this.p == p.p);

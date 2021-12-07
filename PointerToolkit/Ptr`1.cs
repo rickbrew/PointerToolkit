@@ -13,6 +13,9 @@ public unsafe struct Ptr<T>
     private Ptr(T* p) => this.p = p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public T* Get() => this.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator Ptr<T>(T* p) => UnsafePtr.As<T, Ptr<T>>(ref p);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

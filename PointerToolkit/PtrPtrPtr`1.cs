@@ -8,21 +8,24 @@ public unsafe struct PtrPtrPtr<T>
       IComparable<PtrPtrPtr<T>>
       where T : unmanaged
 {
-    private T** p;
+    private T*** p;
 
-    private PtrPtrPtr(T** p) => this.p = p;
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator PtrPtrPtr<T>(T** p) => UnsafePtr.As<T, PtrPtrPtr<T>>(ref p);
+    private PtrPtrPtr(T*** p) => this.p = p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator PtrPtrPtr(PtrPtrPtr<T> ptr) => (void**)ptr.p;
+    public T*** Get() => this.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator T**(PtrPtrPtr<T> ptr) => ptr.p;
+    public static implicit operator PtrPtrPtr<T>(T*** p) => UnsafePtr.As<T, PtrPtrPtr<T>>(ref p);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator void**(PtrPtrPtr<T> ptr) => (void**)ptr.p;
+    public static implicit operator PtrPtrPtr(PtrPtrPtr<T> ptr) => (void***)ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator T***(PtrPtrPtr<T> ptr) => ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator void***(PtrPtrPtr<T> ptr) => (void***)ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int CompareTo(PtrPtrPtr<T> other) => ((IntPtr)this.p).CompareTo(other);
