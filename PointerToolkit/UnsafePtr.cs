@@ -92,9 +92,8 @@ public static unsafe class UnsafePtr
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref U* AsPointer<T, U>(ref T source)
+    public static T* AsPointer<T>(ref T source)
         where T : unmanaged
-        where U : unmanaged
     {
         IL.Emit.Ldarg_0();
         IL.Emit.Ret();
@@ -102,9 +101,8 @@ public static unsafe class UnsafePtr
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref U** AsPointer2<T, U>(ref T source)
+    public static T** AsPointer<T>(ref T* source)
         where T : unmanaged
-        where U : unmanaged
     {
         IL.Emit.Ldarg_0();
         IL.Emit.Ret();
@@ -112,9 +110,8 @@ public static unsafe class UnsafePtr
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref U*** AsPointer3<T, U>(ref T source)
+    public static T*** AsPointer<T>(ref T** source)
         where T : unmanaged
-        where U : unmanaged
     {
         IL.Emit.Ldarg_0();
         IL.Emit.Ret();
