@@ -7,6 +7,34 @@ namespace PointerToolkit;
 public static unsafe class UnsafePtr
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T* AddByteOffset<T>(T* p, nuint offset)
+        where T : unmanaged
+    {
+        return (T*)((byte*)p + offset);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T* AddByteOffset<T>(T* p, nint offset)
+        where T : unmanaged
+    {
+        return (T*)((byte*)p + offset);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T* SubtractByteOffset<T>(T* p, nuint offset)
+        where T : unmanaged
+    {
+        return unchecked((T*)((byte*)p - offset));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T* SubtractByteOffset<T>(T* p, nint offset)
+        where T : unmanaged
+    {
+        return unchecked((T*)((byte*)p - offset));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ref T As<T>(ref void* source)
         where T : unmanaged
     {
