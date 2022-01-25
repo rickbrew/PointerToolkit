@@ -11,6 +11,12 @@ public unsafe readonly struct PtrPtr
 
     private PtrPtr(void** p) => this.p = p;
 
+    public ref void* Value
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref *this.p;
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void** Get() => this.p;
 
