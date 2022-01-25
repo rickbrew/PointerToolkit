@@ -3,11 +3,11 @@ using System.Runtime.CompilerServices;
 
 namespace PointerToolkit;
 
-public unsafe struct PtrPtr
+public unsafe readonly struct PtrPtr
     : IEquatable<PtrPtr>,
       IComparable<PtrPtr>
 {
-    private void** p;
+    private readonly void** p;
 
     private PtrPtr(void** p) => this.p = p;
 
