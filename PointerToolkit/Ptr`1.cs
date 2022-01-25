@@ -21,6 +21,42 @@ public unsafe readonly struct Ptr<T>
         get => ref *this.p;
     }
 
+    public ref T this[int index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref *(this.p + index);
+    }
+
+    public ref T this[long index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref *(this.p + index);
+    }
+
+    public ref T this[nint index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref *(this.p + index);
+    }
+
+    public ref T this[uint index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref *(this.p + index);
+    }
+
+    public ref T this[ulong index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref *(this.p + index);
+    }
+
+    public ref T this[nuint index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref *(this.p + index);
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator Ptr<T>(T* p) => UnsafePtr.As<T, Ptr<T>>(ref p);
 

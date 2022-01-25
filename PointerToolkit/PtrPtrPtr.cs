@@ -20,6 +20,42 @@ public unsafe readonly struct PtrPtrPtr
         get => ref UnsafePtr.As<PtrPtr>(ref *this.p);
     }
 
+    public ref PtrPtr this[int index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref UnsafePtr.As<PtrPtr>(ref *(this.p + index));
+    }
+
+    public ref PtrPtr this[long index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref UnsafePtr.As<PtrPtr>(ref *(this.p + index));
+    }
+
+    public ref PtrPtr this[nint index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref UnsafePtr.As<PtrPtr>(ref *(this.p + index));
+    }
+
+    public ref PtrPtr this[uint index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref UnsafePtr.As<PtrPtr>(ref *(this.p + index));
+    }
+
+    public ref PtrPtr this[ulong index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref UnsafePtr.As<PtrPtr>(ref *(this.p + index));
+    }
+
+    public ref PtrPtr this[nuint index]
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref UnsafePtr.As<PtrPtr>(ref *(this.p + index));
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator PtrPtrPtr(void*** p) => UnsafePtr.As<PtrPtrPtr>(ref p);
 
