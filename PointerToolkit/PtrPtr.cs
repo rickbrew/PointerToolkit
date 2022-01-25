@@ -35,6 +35,14 @@ public unsafe readonly struct PtrPtr
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator !=(PtrPtr ptr1, PtrPtr ptr2) => ptr1.p != ptr2.p;
 
+    public static bool operator >(PtrPtr ptr1, PtrPtr ptr2) => ptr1.p > ptr2.p;
+
+    public static bool operator <(PtrPtr ptr1, PtrPtr ptr2) => ptr1.p < ptr2.p;
+
+    public static bool operator >=(PtrPtr ptr1, PtrPtr ptr2) => ptr1.p >= ptr2.p;
+
+    public static bool operator <=(PtrPtr ptr1, PtrPtr ptr2) => ptr1.p <= ptr2.p;
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override int GetHashCode() => ((IntPtr)this.p).GetHashCode();
 }
