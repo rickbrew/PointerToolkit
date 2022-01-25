@@ -62,4 +62,61 @@ public unsafe readonly struct PtrPtr<T>
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override int GetHashCode() => ((IntPtr)this.p).GetHashCode();
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(PtrPtr<T> ptr, int count) => ptr.p + count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(int count, PtrPtr<T> ptr) => count + ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(PtrPtr<T> ptr, long count) => ptr.p + count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(long count, PtrPtr<T> ptr) => count + ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(PtrPtr<T> ptr, nint count) => ptr.p + count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(nint count, PtrPtr<T> ptr) => count + ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(PtrPtr<T> ptr, uint count) => ptr.p + count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(uint count, PtrPtr<T> ptr) => count + ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(PtrPtr<T> ptr, ulong count) => ptr.p + count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(ulong count, PtrPtr<T> ptr) => count + ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(PtrPtr<T> ptr, nuint count) => ptr.p + count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator +(nuint count, PtrPtr<T> ptr) => count + ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator -(PtrPtr<T> ptr, int count) => ptr.p - count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator -(PtrPtr<T> ptr, long count) => ptr.p - count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator -(PtrPtr<T> ptr, nint count) => ptr.p - count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator -(PtrPtr<T> ptr, uint count) => ptr.p - count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator -(PtrPtr<T> ptr, ulong count) => ptr.p - count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static PtrPtr<T> operator -(PtrPtr<T> ptr, nuint count) => ptr.p - count;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long operator -(PtrPtr<T> ptr1, PtrPtr<T> ptr2) => ptr1.p - ptr2.p;
 }
