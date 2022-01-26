@@ -11,9 +11,6 @@ public unsafe readonly struct PtrPtrPtr
 
     private PtrPtrPtr(void*** p) => this.p = p;
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void*** Get() => this.p;
-
     public ref PtrPtr Value
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -57,6 +54,21 @@ public unsafe readonly struct PtrPtrPtr
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public int CompareTo(PtrPtrPtr other) => ((IntPtr)this.p).CompareTo(other);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override bool Equals(object? other) => (other is PtrPtrPtr p) && (this.p == p.p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public bool Equals(PtrPtrPtr other) => this.p == other.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void*** Get() => this.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override int GetHashCode() => ((IntPtr)this.p).GetHashCode();
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static explicit operator PtrPtrPtr(void* p) => UnsafePtr.As<PtrPtrPtr>(ref p);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -93,15 +105,6 @@ public unsafe readonly struct PtrPtrPtr
     public static implicit operator void***(PtrPtrPtr ptr) => ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override readonly bool Equals(object? other) => (other is PtrPtrPtr p) && (this.p == p.p);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public int CompareTo(PtrPtrPtr other) => ((IntPtr)this.p).CompareTo(other);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly bool Equals(PtrPtrPtr other) => this.p == other.p;
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator ==(PtrPtrPtr ptr1, PtrPtrPtr ptr3) => ptr1.p == ptr3.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -118,9 +121,6 @@ public unsafe readonly struct PtrPtrPtr
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator <=(PtrPtrPtr ptr1, PtrPtrPtr ptr2) => ptr1.p <= ptr2.p;
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override int GetHashCode() => ((IntPtr)this.p).GetHashCode();
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static PtrPtrPtr operator +(PtrPtrPtr ptr, int count) => ptr.p + count;

@@ -12,9 +12,6 @@ public unsafe readonly struct PtrPtr<T>
 
     private PtrPtr(T** p) => this.p = p;
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public T** Get() => this.p;
-
     public ref Ptr<T> Value
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -56,6 +53,21 @@ public unsafe readonly struct PtrPtr<T>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get => ref UnsafePtr.As<T, Ptr<T>>(ref *(this.p + index));
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public int CompareTo(PtrPtr<T> other) => ((IntPtr)this.p).CompareTo(other);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override bool Equals(object? other) => (other is PtrPtr<T> p) && (this.p == p.p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public bool Equals(PtrPtr<T> other) => this.p == other.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public T** Get() => this.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override int GetHashCode() => ((IntPtr)this.p).GetHashCode();
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static explicit operator PtrPtr<T>(T* p) => UnsafePtr.As<T, PtrPtr<T>>(ref p);
@@ -130,15 +142,6 @@ public unsafe readonly struct PtrPtr<T>
     public static explicit operator void***(PtrPtr<T> ptr) => (void***)ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public int CompareTo(PtrPtr<T> other) => ((IntPtr)this.p).CompareTo(other);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override readonly bool Equals(object? other) => (other is PtrPtr<T> p) && (this.p == p.p);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly bool Equals(PtrPtr<T> other) => this.p == other.p;
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator ==(PtrPtr<T> ptr1, PtrPtr<T> ptr2) => ptr1.p == ptr2.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -155,9 +158,6 @@ public unsafe readonly struct PtrPtr<T>
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator <=(PtrPtr<T> ptr1, PtrPtr<T> ptr2) => ptr1.p <= ptr2.p;
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override int GetHashCode() => ((IntPtr)this.p).GetHashCode();
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static PtrPtr<T> operator +(PtrPtr<T> ptr, int count) => ptr.p + count;
