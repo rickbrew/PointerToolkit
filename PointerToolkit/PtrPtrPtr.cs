@@ -68,6 +68,11 @@ public unsafe readonly struct PtrPtrPtr
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override int GetHashCode() => ((IntPtr)this.p).GetHashCode();
 
+    public override string ToString()
+    {
+        return ((UIntPtr)this.p).ToString((sizeof(IntPtr)) == 4 ? "X8" : "X16");
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static explicit operator PtrPtrPtr(void* p) => UnsafePtr.As<PtrPtrPtr>(ref p);
 
