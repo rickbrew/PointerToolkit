@@ -74,6 +74,11 @@ public unsafe readonly struct PtrPtr<T>
         return ((UIntPtr)this.p).ToString((sizeof(IntPtr)) == 4 ? "X8" : "X16");
     }
 
+    public string ToString(string? format, IFormatProvider? formatProvider)
+    {
+        return ((UIntPtr)this.p).ToString(format, formatProvider);
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static explicit operator PtrPtr<T>(T* p) => UnsafePtr.As<T, PtrPtr<T>>(ref p);
 

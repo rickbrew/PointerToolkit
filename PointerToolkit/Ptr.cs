@@ -5,7 +5,8 @@ namespace PointerToolkit;
 
 public unsafe readonly struct Ptr
     : IEquatable<Ptr>,
-      IComparable<Ptr>
+      IComparable<Ptr>,
+      IFormattable
 {
     private readonly void* p;
 
@@ -29,6 +30,11 @@ public unsafe readonly struct Ptr
     public override string ToString()
     {
         return ((UIntPtr)this.p).ToString((sizeof(IntPtr)) == 4 ? "X8" : "X16");
+    }
+
+    public string ToString(string? format, IFormatProvider? formatProvider)
+    {
+        return ((UIntPtr)this.p).ToString(format, formatProvider);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
