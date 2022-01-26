@@ -61,13 +61,61 @@ public unsafe readonly struct Ptr<T>
     public static implicit operator Ptr<T>(T* p) => UnsafePtr.As<T, Ptr<T>>(ref p);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator Ptr(Ptr<T> ptr) => ptr.p;
+    public static explicit operator Ptr<T>(T** p) => UnsafePtr.As<T, Ptr<T>>(ref p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Ptr<T>(T*** p) => UnsafePtr.As<T, Ptr<T>>(ref p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Ptr<T>(void* p) => UnsafePtr.As<Ptr<T>>(ref p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Ptr<T>(void** p) => UnsafePtr.As<Ptr<T>>(ref p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Ptr<T>(void*** p) => UnsafePtr.As<Ptr<T>>(ref p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Ptr<T>(PtrPtr<T> ptr) => Unsafe.As<PtrPtr<T>, Ptr<T>>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Ptr<T>(PtrPtrPtr<T> ptr) => Unsafe.As<PtrPtrPtr<T>, Ptr<T>>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Ptr<T>(Ptr ptr) => Unsafe.As<Ptr, Ptr<T>>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Ptr<T>(PtrPtr ptr) => Unsafe.As<PtrPtr, Ptr<T>>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Ptr<T>(PtrPtrPtr ptr) => Unsafe.As<PtrPtrPtr, Ptr<T>>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator Ptr(Ptr<T> ptr) => Unsafe.As<Ptr<T>, Ptr>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator PtrPtr(Ptr<T> ptr) => Unsafe.As<Ptr<T>, PtrPtr>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator PtrPtrPtr(Ptr<T> ptr) => Unsafe.As<Ptr<T>, PtrPtrPtr>(ref ptr);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator T*(Ptr<T> ptr) => ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator T**(Ptr<T> ptr) => (T**)ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator T***(Ptr<T> ptr) => (T***)ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator void*(Ptr<T> ptr) => ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator void**(Ptr<T> ptr) => (void**)ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator void***(Ptr<T> ptr) => (void***)ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int CompareTo(Ptr<T> other) => ((IntPtr)this.p).CompareTo(other);

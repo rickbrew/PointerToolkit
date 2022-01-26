@@ -18,7 +18,25 @@ public unsafe readonly struct Ptr
     public static implicit operator Ptr(void* p) => UnsafePtr.As<Ptr>(ref p);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator Ptr(void** p) => UnsafePtr.As<Ptr>(ref p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator Ptr(void*** p) => UnsafePtr.As<Ptr>(ref p);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator Ptr(PtrPtr ptr) => Unsafe.As<PtrPtr, Ptr>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator Ptr(PtrPtrPtr ptr) => Unsafe.As<PtrPtrPtr, Ptr>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator void*(Ptr ptr) => ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator void**(Ptr ptr) => (void**)ptr.p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator void***(Ptr ptr) => (void***)ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int CompareTo(Ptr other) => ((IntPtr)this.p).CompareTo(other);
