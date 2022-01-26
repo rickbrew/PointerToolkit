@@ -72,6 +72,18 @@ public unsafe readonly struct PtrPtr
     public static explicit operator PtrPtr(PtrPtrPtr ptr) => Unsafe.As<PtrPtrPtr, PtrPtr>(ref ptr);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator PtrPtr(IntPtr intPtr) => Unsafe.As<IntPtr, PtrPtr>(ref intPtr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator IntPtr(PtrPtr ptr) => Unsafe.As<PtrPtr, IntPtr>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator PtrPtr(UIntPtr intPtr) => Unsafe.As<UIntPtr, PtrPtr>(ref intPtr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator UIntPtr(PtrPtr ptr) => Unsafe.As<PtrPtr, UIntPtr>(ref ptr);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator void*(PtrPtr ptr) => ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
