@@ -5,7 +5,8 @@ namespace PointerToolkit;
 
 public unsafe readonly struct Ptr<T>
     : IEquatable<Ptr<T>>,
-      IComparable<Ptr<T>>
+      IComparable<Ptr<T>>,
+      IFormattable
       where T : unmanaged
 {
     private readonly T* p;
