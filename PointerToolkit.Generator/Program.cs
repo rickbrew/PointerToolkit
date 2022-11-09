@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 
 public static class Program
@@ -25,8 +24,9 @@ public static class Program
     {
         Console.WriteLine($"PointerToolkit generator, outputting to {outputDirPath}");
         
-        // This is 1 plus the maximum number of base COM interfaces needed to support TerraFX.Interop.Windows
-        const int maxBaseCount = 12;
+        // This must be ab least 1 plus the maximum number of base COM interfaces needed to support TerraFX.Interop.Windows
+        // (currently 13 for 10.0.22621).
+        const int maxBaseCount = 16;
 
         // CastPtr`N.Generated.cs
         for (int baseCount = 0; baseCount <= maxBaseCount; ++baseCount)
