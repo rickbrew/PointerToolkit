@@ -1,7 +1,7 @@
 # PointerToolkit
 Provides structs that wrap pointers, as well as `Unsafe`, `Interlocked`, and `Volatile` operations on ref pointers. 
 
-All of the functionality contained within is being used for the work in my upcoming Paint.NET v4.4 release. I'm porting 50,000 lines of C++/CLI, almost all classes that wrap native COM objects, to C#. This package, along with [TerraFX.Interop.Windows](https://github.com/terrafx/terrafx.interop.windows), are the foundation for this work.
+All of the functionality contained within is being used for the work in my upcoming Paint.NET v5.0 release. I'm porting 50,000 lines of C++/CLI, almost all classes that wrap native COM objects, to C#. This package, along with [TerraFX.Interop.Windows](https://github.com/terrafx/terrafx.interop.windows), are the foundation for this work.
 
 The `Ptr` and `Ptr<T>` structs are straightforward enough, they simply wrap a pointer and provide all the casting operators you will need. Pointers up to 3 levels of indirection are supported, e.g. `void***` and `T***`, via`PtrPtr` and `PtrPtrPtr` and their generic versions.
 
