@@ -6,7 +6,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Copyright>Copyright ©️ 2021 Rick Brewster</Copyright>
+    <Copyright>Copyright ©️ Rick Brewster</Copyright>
     <PackageProjectUrl>https://github.com/rickbrew/PointerToolkit</PackageProjectUrl>
     <RepositoryUrl>https://github.com/rickbrew/PointerToolkit</RepositoryUrl>
     <PackageTags>interlocked;pointer;pointers;unsafe;volatile</PackageTags>
