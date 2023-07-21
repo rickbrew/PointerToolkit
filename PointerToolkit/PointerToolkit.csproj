@@ -33,11 +33,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Fody" Version="6.6.4">
+    <PackageReference Include="Fody" Version="6.8.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="InlineIL.Fody" Version="1.7.3" PrivateAssets="all" />
+    <PackageReference Include="InlineIL.Fody" Version="1.7.4" PrivateAssets="all" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="&quot;$(ProjectDir)..\PointerToolkit.Generator\bin\$(Configuration)\$(TargetFramework)\PointerToolkit.Generator.exe&quot; &quot;$(ProjectDir)\&quot;" />
