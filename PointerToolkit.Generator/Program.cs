@@ -24,8 +24,8 @@ public static class Program
     {
         Console.WriteLine($"PointerToolkit generator, outputting to {outputDirPath}");
         
-        // This must be ab least 1 plus the maximum number of base COM interfaces needed to support TerraFX.Interop.Windows
-        // (currently 13 for 10.0.22621).
+        // This must be at least 1 plus the maximum number of base COM interfaces needed to support TerraFX.Interop.Windows
+        // (currently 16 for 10.0.22621.2).
         const int maxBaseCount = 16;
 
         // CastPtr`N.Generated.cs
@@ -66,14 +66,9 @@ public static class Program
                     writer.WriteLine();
                     writer.WriteLine("    [MethodImpl(MethodImplOptions.AggressiveInlining)]");
                     writer.WriteLine("    private CastPtr(T* p) => this.p = p;");
-
-                    if (baseCount == 0)
-                    {
-                        writer.WriteLine();
-                        writer.WriteLine("    [MethodImpl(MethodImplOptions.AggressiveInlining)]");
-                        writer.WriteLine($"    public static implicit operator CastPtr<T>(T* p) => *(CastPtr<T>*)&p;");
-                    }
-
+                    writer.WriteLine();
+                    writer.WriteLine("    [MethodImpl(MethodImplOptions.AggressiveInlining)]");
+                    writer.WriteLine($"    public static implicit operator CastPtr<{typeList}>(T* p) => *(CastPtr<{typeList}>*)&p;");
                     writer.WriteLine();
                     writer.WriteLine("    [MethodImpl(MethodImplOptions.AggressiveInlining)]");
                     writer.WriteLine($"    public static implicit operator T*(CastPtr<{typeList}> ptr) => ptr.p;");
