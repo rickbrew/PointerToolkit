@@ -82,7 +82,7 @@ public static class Program
                     writer.WriteLine("    [MethodImpl(MethodImplOptions.AggressiveInlining)]");
                     writer.WriteLine($"    public static implicit operator void*(CastPtr<{typeList}> ptr) => ptr.p;");
 
-                    // Casts to Ptr<T>
+                    // Casts to Ptr<T>. Commented out because I don't really have a good justification for including them yet.
                     /*
                     writer.WriteLine();
                     writer.WriteLine("    [MethodImpl(MethodImplOptions.AggressiveInlining)]");
@@ -97,6 +97,10 @@ public static class Program
                     writer.WriteLine("    [MethodImpl(MethodImplOptions.AggressiveInlining)]");
                     writer.WriteLine($"    public static implicit operator Ptr(CastPtr<{typeList}> ptr) => ptr.p;");
                     */
+
+                    // It could also be reasonable to add implicit casts from CastPtr<TBase, T1, ... TN> to CastPtr<TBase, T1, ... T(N-1)> etc.
+                    // But I'd rather wait until there's an actual need for something like that. Otherwise it's just adding code for the sake
+                    // of adding code.
 
                     writer.WriteLine("}");
                 });
