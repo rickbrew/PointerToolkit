@@ -3,6 +3,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>PointerToolkit</RootNamespace>
     <Nullable>enable</Nullable>
+    <Features>strict</Features>
+    <IsAotCompatible>true</IsAotCompatible>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
