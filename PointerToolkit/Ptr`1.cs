@@ -72,7 +72,7 @@ public unsafe readonly struct Ptr<T>
 
     public override string ToString()
     {
-        return ((UIntPtr)this.p).ToString((sizeof(IntPtr)) == 4 ? "X8" : "X16");
+        return ((UIntPtr)this.p).ToString(sizeof(IntPtr) == 4 ? "X8" : "X16");
     }
 
     public string ToString(string? format, IFormatProvider? formatProvider)
