@@ -27,6 +27,9 @@ public unsafe readonly ref struct CastPtr<T, TBase1, TBase2, TBase3, TBase4, TBa
     private CastPtr(T* p) => this.p = p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator CastPtr<T, TBase1, TBase2, TBase3, TBase4, TBase5, TBase6, TBase7, TBase8, TBase9, TBase10, TBase11, TBase12, TBase13>(T* p) => *(CastPtr<T, TBase1, TBase2, TBase3, TBase4, TBase5, TBase6, TBase7, TBase8, TBase9, TBase10, TBase11, TBase12, TBase13>*)&p;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator T*(CastPtr<T, TBase1, TBase2, TBase3, TBase4, TBase5, TBase6, TBase7, TBase8, TBase9, TBase10, TBase11, TBase12, TBase13> ptr) => ptr.p;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
