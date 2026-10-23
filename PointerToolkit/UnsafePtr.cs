@@ -96,6 +96,7 @@ public static unsafe class UnsafePtr
         where T : unmanaged
     {
         IL.Emit.Ldarg_0();
+        IL.Emit.Conv_U();
         IL.Emit.Ret();
         throw IL.Unreachable();
     }
@@ -105,6 +106,7 @@ public static unsafe class UnsafePtr
         where T : unmanaged
     {
         IL.Emit.Ldarg_0();
+        IL.Emit.Conv_U();
         IL.Emit.Ret();
         throw IL.Unreachable();
     }
@@ -114,6 +116,7 @@ public static unsafe class UnsafePtr
         where T : unmanaged
     {
         IL.Emit.Ldarg_0();
+        IL.Emit.Conv_U();
         IL.Emit.Ret();
         throw IL.Unreachable();
     }
