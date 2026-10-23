@@ -72,7 +72,7 @@ public static unsafe class VolatilePtr
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void Write<T>(ref T** location, T** value)
-    where T : unmanaged
+        where T : unmanaged
     {
         Volatile.Write(ref UnsafePtr.As<T, IntPtr>(ref location), (IntPtr)value);
     }
